@@ -9,6 +9,7 @@ let outlaw;
 let backDrop;
 let xSpot = 50;
 let ySpot;
+let screen = "start";
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -24,9 +25,24 @@ function draw() {
   // want to rotate through background based on time of day/area?
 
 
+  // make this it's own function
   fill("#33221c");
   rect(0, 550, width, 300);
   image(outlaw, xSpot, 350, 200, 200);
+}
+
+function changeScreenIfNeeded(){
+  if (screen === "start"){
+    // display start screen
+
+  }
+  if (screen === "instructions"){
+    // display instructions
+
+  }
+  if (screen === "play"){
+    // displays game
+  }
 }
 
 function keyPressed(){
