@@ -40,6 +40,7 @@ function keyPressed(){
   }
   if (key === "d"){
     // walk forward
+    // I want the movement to be smoother, so if i hold down it moves 
     if (xSpot > width){
       xSpot = 0;
     }
@@ -51,3 +52,6 @@ function keyPressed(){
     // jump
   }
 }
+
+
+// when an object appears, if the distance is around 50-25 pixels, trigger a text function thing most likely will be asking a question

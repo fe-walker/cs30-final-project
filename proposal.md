@@ -11,6 +11,7 @@ I want to build an adventure type game, similar to the dungeon crawler games fro
 - player character
 - yes/no (y/n) prompts 
 - text input options
+- starting screen with instructions 
 
 ## Nice to have list
 - sounds/sound effects
