@@ -4,8 +4,8 @@
 I want to build an adventure type game, similar to the dungeon crawler games from the exemplars, taking inspiration from The Oregon Trail. It'll probably be more western than medival/fantasy dungeon, and interactive prompts to make choices.
 
 ## Needs to have list
-- WASD to move
-- interact with objects around
+- WASD for movement
+- interact with objects/other characters around
 - map
 - pixelated images
 - player character
