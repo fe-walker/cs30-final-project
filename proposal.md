@@ -6,7 +6,7 @@ I want to build an adventure type game, similar to the dungeon crawler games fro
 ## Needs to have list
 - WASD for movement
 - interact with objects/other characters around
-- map
+- sound/sound effects
 - pixelated images
 - player character
 - yes/no (y/n) prompts 
@@ -14,6 +14,6 @@ I want to build an adventure type game, similar to the dungeon crawler games fro
 - starting screen with instructions 
 
 ## Nice to have list
-- sounds/sound effects
+- map
 - movement animation
 - option to choose what the player looks like?
