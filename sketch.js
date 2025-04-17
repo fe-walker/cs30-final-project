@@ -7,6 +7,7 @@
 
 let outlaw;
 let backDrop;
+let backDrop2;
 let xSpot = 50;
 let ySpot;
 let screen = "start";
@@ -17,32 +18,43 @@ function setup() {
 
 function preload(){
   outlaw = loadImage("sprite_05.png");
+  backDrop2 = loadImage("instructions-backdrop.jpg");
   backDrop = loadImage("desert.png");
+
 }
 
 function draw() {
-  background(backDrop);
+  background(backDrop2);
   // want to rotate through background based on time of day/area?
 
-
-  // make this it's own function
-  fill("#33221c");
-  rect(0, 550, width, 300);
-  image(outlaw, xSpot, 350, 200, 200);
+  changeScreenIfNeeded();
+  console.log(screen);
 }
 
 function changeScreenIfNeeded(){
   if (screen === "start"){
     // display start screen
-
+    if (key === "i"){
+      screen = "instructions";
+    }
   }
   if (screen === "instructions"){
     // display instructions
-
   }
   if (screen === "play"){
     // displays game
+    displayEnvironment();
+    displayPlayer();
   }
+}
+
+function displayEnvironment(){
+  fill("#33221c");
+  rect(0, 550, width, 300);
+}
+
+function displayPlayer(){
+  image(outlaw, xSpot, 350, 200, 200);
 }
 
 function keyPressed(){
@@ -66,6 +78,9 @@ function keyPressed(){
   }
   if (keyCode === 32){
     // jump
+  }
+  if (key === "i"){
+    screen = "instructions";
   }
 }
 
