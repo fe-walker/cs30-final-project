@@ -5,7 +5,7 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let name;
+let outlawName;
 let outlaw;
 let backDrop;
 let backDrop3;
@@ -14,6 +14,13 @@ let myFont;
 let xSpot = 50;
 let ySpot;
 let screen = "start";
+
+//  + outlawName + 
+
+let introText = ["You are an outlaw notorious for evading the law", "You move around from town to town across the desert, never tied down",
+  "You are a lone wolf and hate having people tag along on your journey", "Many of the folks you've encountered don't have fond memories of you", 
+  "Yet you'll always get the job done", "Your main motivation has always been money", "And you've frequently worked as a bounty hunter", "This is a journey of self discovery", 
+  "As you discover how truly wonderful the world and humanity can be", "The people you meet can change your cynical attitude, if you allow them"]; 
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -87,21 +94,18 @@ function displayIntro(){
   textSize(36);
   textAlign(CENTER);
   textFont(myFont);
-  text("WELCOME TO THE WILD WEST", width/2, height/2);
+  text("WELCOME TO THE WILD WEST", width/2, 100);
+  text("PLEASE ENTER YOUR NAME", width/2, 150);
+  // outlawName = prompt("What is your name?");
 
+  if (keyPressed === 39){
+    for (let y = 0; y < introText.length; y++){
+      if (keyPressed === 39){
+        text( introText[y], width/2, height/2);
+      }
+    }
+  }
   // move onto each piece of text when forward arrow is pressed (find a way to do this wihtout using clear function)
-  text("PLEASE ENTER YOUR NAME", width/2, height/2);
-  name = prompt("What is your name?");
-  text("You are " + name + " an outlaw notorious for evading the law", width/2, height/2);
-  text("You move around from town to town across the desert, never tied down", width/2, height/2);
-  text("You are a lone wolf and hate having people tag along on your journey", width/2, height/2);
-  text("Many of the folks you've encountered don't have fond memories of you", width/2, height/2);
-  text("Yet you'll always get the job done", width/2, height/2);
-  text("Your main motivation has always been money", width/2, height/2);
-  text("And you've frequently worked as a bounty hunter", width/2, height/2);
-  text("This is a journey of self discovery", width/2, height/2);
-  text("As you discover how truly wonderful the world and humanity can be", width/2, height/2);
-  text("The people you meet can change your cynical attitude, if you allow them", width/2, height/2);
 
 }
 
