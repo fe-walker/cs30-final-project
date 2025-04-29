@@ -5,6 +5,7 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+let y = 0;
 let outlawName;
 let outlaw;
 let backDrop;
@@ -95,18 +96,30 @@ function displayIntro(){
   textAlign(CENTER);
   textFont(myFont);
   text("WELCOME TO THE WILD WEST", width/2, 100);
-  text("PLEASE ENTER YOUR NAME", width/2, 150);
+  // text("WOULD YOU LIKE TO ENTER YOUR NAME?", width/2, 150);
   // outlawName = prompt("What is your name?");
-
-  if (keyPressed === 39){
-    for (let y = 0; y < introText.length; y++){
-      if (keyPressed === 39){
-        text( introText[y], width/2, height/2);
-      }
+  // console.log(outlawName);
+  // console.log(introText.length);
+  if (y === introText.length){
+    console.log(introText.length);
+    y = 0;
+    text("READY TO PLAY?", width/2, 300);
+    text("Y/N", width/2, 400);
+    if (key === 'y'){
+      screen === 'play';
+    }
+    else if (key === 'n'){
+      text("If you aren't ready you can press 'i' to view instructions or enter to see intro again", width/2, 500);
     }
   }
   // move onto each piece of text when forward arrow is pressed (find a way to do this wihtout using clear function)
 
+}
+
+function showStoryLine(){
+  let lineOText = introText[y];
+  text(lineOText, width/2, height/2);
+  y = y + 1;
 }
 
 function displayEnvironment(){
@@ -148,6 +161,9 @@ function keyPressed(){
   }
   if (keyCode === 39){
     // change the text
+  }
+  if (key === 'b'){
+    showStoryLine();
   }
 }
 
