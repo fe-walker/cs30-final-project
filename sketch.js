@@ -16,7 +16,6 @@ let xSpot = 50;
 let ySpot;
 let screen = "start";
 
-//  + outlawName + 
 
 let introText = ["You are an outlaw notorious for evading the law", "You move around from town to town across the desert, never tied down",
   "You are a lone wolf and hate having people tag along on your journey", "Many of the folks you've encountered don't have fond memories of you", 
@@ -63,6 +62,8 @@ function changeScreenIfNeeded(){
     background(backDrop3);
     displayEnvironment();
     displayPlayer();
+
+    demoText();
   }
 }
 
@@ -96,30 +97,39 @@ function displayIntro(){
   textAlign(CENTER);
   textFont(myFont);
   text("WELCOME TO THE WILD WEST", width/2, 100);
-  // text("WOULD YOU LIKE TO ENTER YOUR NAME?", width/2, 150);
-  // outlawName = prompt("What is your name?");
-  // console.log(outlawName);
-  // console.log(introText.length);
-  if (y === introText.length){
-    console.log(introText.length);
-    y = 0;
+  text("PRESS 1 TO ENTER YOUR NAME", width/2, 150);
+  if (key === '1' && !outlawName){
+    outlawName = prompt("What is your name?");
+    alert("Your name is " + outlawName);
+    console.log(outlawName);
+    text("PRESS B TO CONTINUE", width/2, 200);
+  }
+  else{
+    text("PRESS B TO CONTINUE", width/2, 200);
+  }
+
+  showStoryLine();
+
+  readyToPlay();
+}
+
+function showStoryLine(){
+  textSize(20);
+  let lineOfText = introText[y];
+  text(lineOfText, width/2, height/2);
+}
+
+function readyToPlay(){
+  if (y > introText.length){
     text("READY TO PLAY?", width/2, 300);
     text("Y/N", width/2, 400);
     if (key === 'y'){
-      screen === 'play';
+      screen = 'play';
     }
     else if (key === 'n'){
       text("If you aren't ready you can press 'i' to view instructions or enter to see intro again", width/2, 500);
     }
   }
-  // move onto each piece of text when forward arrow is pressed (find a way to do this wihtout using clear function)
-
-}
-
-function showStoryLine(){
-  let lineOText = introText[y];
-  text(lineOText, width/2, height/2);
-  y = y + 1;
 }
 
 function displayEnvironment(){
@@ -128,7 +138,17 @@ function displayEnvironment(){
 }
 
 function displayPlayer(){
+  text(outlawName, xSpot + 100, 350);
   image(outlaw, xSpot, 350, 200, 200);
+}
+
+function demoText(){
+  fill("white");
+  textSize(20);
+  textAlign(CENTER);
+  textFont(myFont);
+  text("Welcome to the wild west " + outlawName + "!", 300, 600);
+  text("Press space to continue with demo ", 300, 600);
 }
 
 function keyPressed(){
@@ -159,11 +179,8 @@ function keyPressed(){
   if (keyCode === 13){
     screen = "intro";
   }
-  if (keyCode === 39){
-    // change the text
-  }
   if (key === 'b'){
-    showStoryLine();
+    y++;
   }
 }
 
