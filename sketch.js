@@ -14,6 +14,8 @@ let backDrop2;
 let myFont;
 let xSpot = 50;
 let ySpot;
+let npcxSpot;
+let npcySpot;
 let screen = "start";
 
 
@@ -27,8 +29,14 @@ function setup() {
 }
 
 function preload(){
+  // fonts
   myFont = loadFont("Ewert-Regular.ttf");
+
+  // characters
   outlaw = loadImage("sprite_05.png");
+  outlaw = loadImage("sprite_05.png");
+
+  // backgrounds
   backDrop2 = loadImage("instructions-backdrop.jpg");
   backDrop3 = loadImage("desert.png");
   backDrop = loadImage("start-screen.webp");
@@ -57,15 +65,23 @@ function changeScreenIfNeeded(){
     background(backDrop2);
     displayIntro();
   }
-  if (screen === "play"){
-    // displays game
+  if (screen === "demo"){
     background(backDrop3);
     displayEnvironment();
     displayPlayer();
 
     demoText();
   }
+  if (screen === "play"){
+    // displays game
+    background(backDrop3);
+    displayEnvironment();
+    displayPlayer();
+
+
+  }
 }
+
 
 function displayInstructions(){
   fill("white");
@@ -124,7 +140,7 @@ function readyToPlay(){
     text("READY TO PLAY?", width/2, 300);
     text("Y/N", width/2, 400);
     if (key === 'y'){
-      screen = 'play';
+      screen = 'demo';
     }
     else if (key === 'n'){
       text("If you aren't ready you can press 'i' to view instructions or enter to see intro again", width/2, 500);
@@ -148,7 +164,41 @@ function demoText(){
   textAlign(CENTER);
   textFont(myFont);
   text("Welcome to the wild west " + outlawName + "!", 300, 600);
-  text("Press space to continue with demo ", 300, 600);
+  text("Would you like to continue with the demo?", 300, 650);
+  text("Y/N", 300, 700);
+  if (key === 'y'){
+    displayDemo();
+  }
+  else if (key === 'n'){
+    screen = 'play';
+  }
+  return;
+}
+
+function displayDemo(){
+  fill("white");
+  textSize(20);
+  textAlign(CENTER);
+  textFont(myFont);
+  text("Remember to use the 'd' key to move forward", 300, 600);
+  if (key === 'd'){
+    text("And the 'a' key to go backwards", 300, 600);
+  }
+  if (key === 'a'){
+    text("And the spacebar to jump", 300, 600);
+  }
+  if (keyCode === '32'){
+    text("Amazing! To move through the environment just keep walking", 300, 600);
+  }
+  if (xSpot === width + 200 || xSpot === 0){
+    text("Who's that in the distance? Go talk to them.", 300, 600);
+  }
+}
+
+function talkToNpc(){
+  if (dist(xSpot, ySpot, npcxSpot, npcySpot) <= 150){
+
+  }
 }
 
 function keyPressed(){
@@ -181,6 +231,10 @@ function keyPressed(){
   }
   if (key === 'b'){
     y++;
+  }
+  if (key === "f"){
+    outlawName = "Faith";
+    screen = 'demo';
   }
 }
 
