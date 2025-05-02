@@ -11,11 +11,13 @@ let outlaw;
 let backDrop;
 let backDrop3;
 let backDrop2;
+let page;
 let myFont;
 let xSpot = 50;
 let ySpot;
 let npcxSpot;
 let npcySpot;
+let npcName;
 let screen = "start";
 
 
@@ -35,6 +37,7 @@ function preload(){
   // characters
   outlaw = loadImage("sprite_05.png");
   outlaw = loadImage("sprite_05.png");
+  // add npcs with name
 
   // backgrounds
   backDrop2 = loadImage("instructions-backdrop.jpg");
@@ -78,6 +81,13 @@ function changeScreenIfNeeded(){
     displayEnvironment();
     displayPlayer();
 
+    if (page === ){
+      background();
+    }
+    if (page === ){
+      npcName === ("add variable with the name from preload function");
+      // might need to change this so it doesn't throw an error
+    }
 
   }
 }
@@ -192,12 +202,40 @@ function displayDemo(){
   }
   if (xSpot === width + 200 || xSpot === 0){
     text("Who's that in the distance? Go talk to them.", 300, 600);
+    talkToNpc();
   }
+}
+
+function displayNPC(){
+// might need to change the way my npc variables are set up because i think it'll throw an error for the name 
+
+  text(npcName, npcxSpot + 100, 350);
+  image(npcName, xSpot, 350, 200, 200);
 }
 
 function talkToNpc(){
   if (dist(xSpot, ySpot, npcxSpot, npcySpot) <= 150){
-
+    text("Would you like to speak to them?", 300, 600);
+    if (key === 'y'){
+      if (npcName ===){
+        displayNPC();
+      }
+      else if(npcName ===){
+        displayNPC();
+      }
+      else if(npcName ===){
+        displayNPC();
+      }
+      else if(npcName ===){
+        displayNPC();
+      }
+      else if(npcName ===){
+        displayNPC();
+      }
+    }
+    else if (key === 'n'){
+      // screen = 'play';
+    }
   }
 }
 
@@ -215,6 +253,7 @@ function keyPressed(){
     // I want the movement to be smoother, so if i hold down it moves 
     if (xSpot > width){
       xSpot = 0;
+      page++;
     }
     else{
       xSpot = xSpot + 25;
