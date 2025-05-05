@@ -11,7 +11,7 @@ let outlaw;
 let backDrop;
 let backDrop3;
 let backDrop2;
-let page;
+let page = 0;
 let myFont;
 let xSpot = 50;
 let ySpot;
@@ -20,6 +20,7 @@ let npcySpot;
 let npcName;
 let screen = "start";
 
+// page 1 is demo 
 
 let introText = ["You are an outlaw notorious for evading the law", "You move around from town to town across the desert, never tied down",
   "You are a lone wolf and hate having people tag along on your journey", "Many of the folks you've encountered don't have fond memories of you", 
@@ -35,9 +36,12 @@ function preload(){
   myFont = loadFont("Ewert-Regular.ttf");
 
   // characters
-  outlaw = loadImage("sprite_05.png");
-  outlaw = loadImage("sprite_05.png");
-  // add npcs with name
+  outlaw = loadImage("outlaw.png");
+  farmer = loadImage("farmer.png");
+  sheriff1 = loadImage("sheriff-no-1.png");
+  sheriff2 = loadImage("sheriff-no-2.png");
+  cowgirl = loadImage("cowgirl.png");
+  nobleLady = loadImage("noble-lady.png");
 
   // backgrounds
   backDrop2 = loadImage("instructions-backdrop.jpg");
@@ -45,8 +49,6 @@ function preload(){
   backDrop = loadImage("start-screen.webp");
 
 }
-
-
 
 function draw() {
   // want to rotate through background based on time of day/area?
@@ -81,14 +83,11 @@ function changeScreenIfNeeded(){
     displayEnvironment();
     displayPlayer();
 
-    if (page === ){
-      background();
+    if (page === 1){
+      npcName = nobleLady;
     }
-    if (page === ){
-      npcName === ("add variable with the name from preload function");
-      // might need to change this so it doesn't throw an error
-    }
-
+    // decide which pages the other ones appear on and which pages i change the background on 
+    // decide amount of pages that i need
   }
 }
 
@@ -190,17 +189,21 @@ function displayDemo(){
   textSize(20);
   textAlign(CENTER);
   textFont(myFont);
-  text("Remember to use the 'd' key to move forward", 300, 600);
+  text("Remember to use the 'd' key to move forward", 800, 600);
   if (key === 'd'){
     text("And the 'a' key to go backwards", 300, 600);
+    console.log(1);
   }
   if (key === 'a'){
     text("And the spacebar to jump", 300, 600);
+    console.log(2);
   }
   if (keyCode === '32'){
     text("Amazing! To move through the environment just keep walking", 300, 600);
+    console.log(3);
   }
   if (xSpot === width + 200 || xSpot === 0){
+    console.log(4);
     text("Who's that in the distance? Go talk to them.", 300, 600);
     talkToNpc();
   }
@@ -217,19 +220,19 @@ function talkToNpc(){
   if (dist(xSpot, ySpot, npcxSpot, npcySpot) <= 150){
     text("Would you like to speak to them?", 300, 600);
     if (key === 'y'){
-      if (npcName ===){
+      if (npcName === nobleLady){
         displayNPC();
       }
-      else if(npcName ===){
+      else if(npcName === farmer){
         displayNPC();
       }
-      else if(npcName ===){
+      else if(npcName === cowgirl){
         displayNPC();
       }
-      else if(npcName ===){
+      else if(npcName === sheriff1){
         displayNPC();
       }
-      else if(npcName ===){
+      else if(npcName === sheriff2){
         displayNPC();
       }
     }
@@ -254,9 +257,11 @@ function keyPressed(){
     if (xSpot > width){
       xSpot = 0;
       page++;
+      console.log("page is" + page);
     }
     else{
       xSpot = xSpot + 25;
+      console.log("page is" + page);
     }
   }
   if (keyCode === 32){
