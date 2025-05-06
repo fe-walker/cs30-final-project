@@ -5,27 +5,37 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let y = 0;
-let outlawName;
+// state variables
+let screen = "start";
+let page = 0;
+let question;
+
+// image variables
 let outlaw;
 let backDrop;
 let backDrop3;
 let backDrop2;
-let page = 0;
-let myFont;
+let npcName;
+
+// movement/placement variables
 let xSpot = 50;
 let ySpot;
 let npcxSpot;
 let npcySpot;
-let npcName;
-let screen = "start";
 
-// page 1 is demo 
+// misc variables
+let myFont;
+let outlawName;
+let y = 0;
 
+// arrays
 let introText = ["You are an outlaw notorious for evading the law", "You move around from town to town across the desert, never tied down",
   "You are a lone wolf and hate having people tag along on your journey", "Many of the folks you've encountered don't have fond memories of you", 
   "Yet you'll always get the job done", "Your main motivation has always been money", "And you've frequently worked as a bounty hunter", "This is a journey of self discovery", 
   "As you discover how truly wonderful the world and humanity can be", "The people you meet can change your cynical attitude, if you allow them"]; 
+
+
+// functions
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -54,6 +64,97 @@ function draw() {
   // want to rotate through background based on time of day/area?
   changeScreenIfNeeded();
   console.log(screen);
+}
+
+function keyPressed(){
+
+  if (screen === 'start'){
+    if (key === "i"){
+      screen = "instructions";
+    }
+    if (keyCode === 13){
+      screen = "intro";
+    }
+  }
+
+
+  if (screen === 'instructions'){
+    if (keyCode === 13){
+      screen = "intro";
+    }
+  }
+
+
+  if (screen === 'intro'){
+    if (key === 'b'){
+      y++;
+    }
+  }
+
+
+  if (screen === 'demo'){
+    if (key === "w"){
+    }
+    if (key === "a"){
+      // walk backwards
+      xSpot = xSpot - 25;
+    }
+    if (key === "s"){
+    }
+    if (key === "d"){
+      // walk forward
+      // I want the movement to be smoother, so if i hold down it moves 
+      if (xSpot > width){
+        xSpot = 0;
+        page++;
+        console.log("page is" + page);
+      }
+      else{
+        xSpot = xSpot + 25;
+        console.log("page is" + page);
+      }
+    }
+    if (keyCode === 32){
+      // jump
+    }
+  }
+
+
+  if (screen === 'play'){
+    if (key === "w"){
+    }
+    if (key === "a"){
+    // walk backwards
+      xSpot = xSpot - 25;
+    }
+    if (key === "s"){
+    }
+    if (key === "d"){
+    // walk forward
+    // I want the movement to be smoother, so if i hold down it moves 
+      if (xSpot > width){
+        xSpot = 0;
+        page++;
+        console.log("page is" + page);
+      }
+      else{
+        xSpot = xSpot + 25;
+        console.log("page is" + page);
+      }
+    }
+    if (keyCode === 32){
+    // jump
+    }
+  }
+
+
+  // if (screen === 'end'){}
+
+  // my shortcut 
+  if (key === "f"){
+    outlawName = "Faith";
+    screen = 'demo';
+  }
 }
 
 function changeScreenIfNeeded(){
@@ -88,6 +189,49 @@ function changeScreenIfNeeded(){
     }
     // decide which pages the other ones appear on and which pages i change the background on 
     // decide amount of pages that i need
+  }
+}
+
+function displayEnvironment(){
+  fill("#33221c");
+  rect(0, 550, width, 300);
+}
+
+function displayPlayer(){
+  text(outlawName, xSpot + 100, 350);
+  image(outlaw, xSpot, 350, 200, 200);
+}
+
+function displayNPC(){
+  // might need to change the way my npc variables are set up because i think it'll throw an error for the name 
+  
+  text(npcName, npcxSpot + 100, 350);
+  image(npcName, xSpot, 350, 200, 200);
+}
+  
+function talkToNpc(){
+  if (dist(xSpot, ySpot, npcxSpot, npcySpot) <= 150){
+    text("Would you like to speak to them?", 300, 600);
+    if (key === 'y'){
+      if (npcName === nobleLady){
+        displayNPC();
+      }
+      else if(npcName === farmer){
+        displayNPC();
+      }
+      else if(npcName === cowgirl){
+        displayNPC();
+      }
+      else if(npcName === sheriff1){
+        displayNPC();
+      }
+      else if(npcName === sheriff2){
+        displayNPC();
+      }
+    }
+    else if (key === 'n'){
+      // screen = 'play';
+    }
   }
 }
 
@@ -133,18 +277,10 @@ function displayIntro(){
     text("PRESS B TO CONTINUE", width/2, 200);
   }
 
-  showStoryLine();
-
-  readyToPlay();
-}
-
-function showStoryLine(){
   textSize(20);
   let lineOfText = introText[y];
   text(lineOfText, width/2, height/2);
-}
 
-function readyToPlay(){
   if (y > introText.length){
     text("READY TO PLAY?", width/2, 300);
     text("Y/N", width/2, 400);
@@ -157,21 +293,13 @@ function readyToPlay(){
   }
 }
 
-function displayEnvironment(){
-  fill("#33221c");
-  rect(0, 550, width, 300);
-}
-
-function displayPlayer(){
-  text(outlawName, xSpot + 100, 350);
-  image(outlaw, xSpot, 350, 200, 200);
-}
-
-function demoText(){
+function displayDemo(){
   fill("white");
   textSize(20);
   textAlign(CENTER);
   textFont(myFont);
+
+
   text("Welcome to the wild west " + outlawName + "!", 300, 600);
   text("Would you like to continue with the demo?", 300, 650);
   text("Y/N", 300, 700);
@@ -181,14 +309,9 @@ function demoText(){
   else if (key === 'n'){
     screen = 'play';
   }
-  return;
-}
 
-function displayDemo(){
-  fill("white");
-  textSize(20);
-  textAlign(CENTER);
-  textFont(myFont);
+
+
   text("Remember to use the 'd' key to move forward", 800, 600);
   if (key === 'd'){
     text("And the 'a' key to go backwards", 300, 600);
@@ -209,78 +332,50 @@ function displayDemo(){
   }
 }
 
-function displayNPC(){
-// might need to change the way my npc variables are set up because i think it'll throw an error for the name 
 
-  text(npcName, npcxSpot + 100, 350);
-  image(npcName, xSpot, 350, 200, 200);
-}
+// get rid of all this eventually
 
-function talkToNpc(){
-  if (dist(xSpot, ySpot, npcxSpot, npcySpot) <= 150){
-    text("Would you like to speak to them?", 300, 600);
-    if (key === 'y'){
-      if (npcName === nobleLady){
-        displayNPC();
-      }
-      else if(npcName === farmer){
-        displayNPC();
-      }
-      else if(npcName === cowgirl){
-        displayNPC();
-      }
-      else if(npcName === sheriff1){
-        displayNPC();
-      }
-      else if(npcName === sheriff2){
-        displayNPC();
-      }
-    }
-    else if (key === 'n'){
-      // screen = 'play';
-    }
-  }
-}
+// function showStoryLine(){
+//   textSize(20);
+//   let lineOfText = introText[y];
+//   text(lineOfText, width/2, height/2);
+// }
 
-function keyPressed(){
-  if (key === "w"){
-  }
-  if (key === "a"){
-    // walk backwards
-    xSpot = xSpot - 25;
-  }
-  if (key === "s"){
-  }
-  if (key === "d"){
-    // walk forward
-    // I want the movement to be smoother, so if i hold down it moves 
-    if (xSpot > width){
-      xSpot = 0;
-      page++;
-      console.log("page is" + page);
-    }
-    else{
-      xSpot = xSpot + 25;
-      console.log("page is" + page);
-    }
-  }
-  if (keyCode === 32){
-    // jump
-  }
-  if (key === "i"){
-    screen = "instructions";
-  }
-  if (keyCode === 13){
-    screen = "intro";
-  }
-  if (key === 'b'){
-    y++;
-  }
-  if (key === "f"){
-    outlawName = "Faith";
-    screen = 'demo';
-  }
-}
+// function readyToPlay(){
+//   if (y > introText.length){
+//     text("READY TO PLAY?", width/2, 300);
+//     text("Y/N", width/2, 400);
+//     if (key === 'y'){
+//       screen = 'demo';
+//     }
+//     else if (key === 'n'){
+//       text("If you aren't ready you can press 'i' to view instructions or enter to see intro again", width/2, 500);
+//     }
+//   }
+// }
+
+// function demoText(){
+//   fill("white");
+//   textSize(20);
+//   textAlign(CENTER);
+//   textFont(myFont);
+//   text("Welcome to the wild west " + outlawName + "!", 300, 600);
+//   text("Would you like to continue with the demo?", 300, 650);
+//   text("Y/N", 300, 700);
+//   if (key === 'y'){
+//     displayDemo();
+//   }
+//   else if (key === 'n'){
+//     screen = 'play';
+//   }
+//   return;
+// }
+
+
+
+
+
+
 
 
 // when an object appears, if the distance is around 50-25 pixels, trigger a text function thing most likely will be asking a question
