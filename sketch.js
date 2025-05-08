@@ -9,6 +9,8 @@
 let screen = "start";
 let page = 0;
 let question = 'none';
+let movementDemo = 'off';
+let npcDemo = 'off';
 
 // image variables
 let outlaw;
@@ -21,7 +23,7 @@ let npcName;
 let xSpot = 50;
 let ySpot;
 let npcxSpot;
-let npcySpot;
+let npcySpot = 350;
 
 // misc variables
 let myFont;
@@ -216,8 +218,8 @@ function changeScreenIfNeeded(){
     displayPlayer();
 
     if (page === 1){
-
       npcName = nobleLady;
+      npcxSpot = width - 50;
     }
     // decide which pages the other ones appear on and which pages i change the background on 
     // decide amount of pages that i need
@@ -236,17 +238,18 @@ function displayPlayer(){
 
 function displayNPC(){
   // might need to change the way my npc variables are set up because i think it'll throw an error for the name 
-  
   text(npcName, npcxSpot + 100, 350);
-  image(npcName, xSpot, 350, 200, 200);
+  image(npcName, npcxSpot, npcySpot, 200, 200);
 }
   
 function talkToNpc(){
   if (dist(xSpot, ySpot, npcxSpot, npcySpot) <= 150){
     text("Would you like to speak to them?", 300, 600);
+    text("Y/N", 300, 700);
     if (question === 'true'){
       if (npcName === nobleLady){
-        displayNPC();
+        text ("hello!", width-300, 600);
+        // displayNPC();
       }
       else if(npcName === farmer){
         displayNPC();
@@ -336,27 +339,32 @@ function displayDemo(){
     text("Would you like to continue with the demo?", 300, 650);
     text("Y/N", 300, 700);
   }
-  // text("Welcome to the wild west " + outlawName + "!", 300, 600);
-  // text("Would you like to continue with the demo?", 300, 650);
-  // text("Y/N", 300, 700);
   if (question === 'true'){
     // question = 'none';
-    text("PRESS THE ARROW KEY TO CONTINUE", 300, 600);
-    if (keyCode === 39){
+    if (npcDemo === 'off'){
+      text("PRESS THE ARROW KEY TO CONTINUE", 300, 600);
+    }
+    if (keyCode === 39 && screen === 'demo'){
+      movementDemo = 'on';
+      console.log(movementDemo);
       text("Remember to use the 'd' key to move forward", 300, 700);
     }
-    if (key === 'd'){
+    if (key === 'd' && movementDemo === 'on'){
       text("And the 'a' key to go backwards", 300, 700);
+      console.log(movementDemo);
     }
-    if (key === 'a'){
+    if (key === 'a'&& movementDemo === 'on'){
       text("And the spacebar to jump", 300, 700);
     }
     if (keyCode === 32){
       text("Amazing! To move through the environment just keep walking", 300, 700);
+      movementDemo = 'off';
+      npcDemo = 'on';
+      console.log(movementDemo);
     }
     if (xSpot === width + 200 || xSpot === 0){
       text("Who's that in the distance? Go talk to them.", 300, 600);
-      talkToNpc();
+      displayNPC();
     }
   }
   else if (question === 'false'){
