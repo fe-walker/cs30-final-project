@@ -17,17 +17,18 @@ let outlaw;
 let backDrop;
 let backDrop3;
 let backDrop2;
-let npcName;
+let npc;
 
 // movement/placement variables
 let xSpot = 50;
-let ySpot;
-let npcxSpot;
+let ySpot = 350;
+let npcxSpot = 0;
 let npcySpot = 350;
 
 // misc variables
 let myFont;
 let outlawName;
+let npcName;
 let y = 0;
 
 // arrays
@@ -183,6 +184,7 @@ function keyPressed(){
   if (key === "f"){
     outlawName = "Faith";
     screen = 'demo';
+    page = 1;
   }
   if (key === 'b'){
     console.log(question);
@@ -209,7 +211,11 @@ function changeScreenIfNeeded(){
     displayPlayer();
     displayDemo();
 
-    // demoText();
+    if (page === 1){
+      question = 'none';
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
   }
   if (screen === "play"){
     // displays game
@@ -217,10 +223,7 @@ function changeScreenIfNeeded(){
     displayEnvironment();
     displayPlayer();
 
-    if (page === 1){
-      npcName = nobleLady;
-      npcxSpot = width - 50;
-    }
+
     // decide which pages the other ones appear on and which pages i change the background on 
     // decide amount of pages that i need
   }
@@ -237,30 +240,32 @@ function displayPlayer(){
 }
 
 function displayNPC(){
-  // might need to change the way my npc variables are set up because i think it'll throw an error for the name 
   text(npcName, npcxSpot + 100, 350);
-  image(npcName, npcxSpot, npcySpot, 200, 200);
+  if (npc !== undefined) {
+    image(npc, npcxSpot, npcySpot, 200, 200);
+    talkToNpc();
+  }
 }
   
 function talkToNpc(){
-  if (dist(xSpot, ySpot, npcxSpot, npcySpot) <= 150){
+  if (dist(xSpot, ySpot, npcxSpot, npcySpot) <= 250){
     text("Would you like to speak to them?", 300, 600);
     text("Y/N", 300, 700);
     if (question === 'true'){
-      if (npcName === nobleLady){
+      if (npc === nobleLady){
         text ("hello!", width-300, 600);
         // displayNPC();
       }
-      else if(npcName === farmer){
+      else if(npc === farmer){
         displayNPC();
       }
-      else if(npcName === cowgirl){
+      else if(npc === cowgirl){
         displayNPC();
       }
-      else if(npcName === sheriff1){
+      else if(npc === sheriff1){
         displayNPC();
       }
-      else if(npcName === sheriff2){
+      else if(npc === sheriff2){
         displayNPC();
       }
     }
@@ -304,7 +309,6 @@ function displayIntro(){
   if (keyCode === 39 && !outlawName){
     outlawName = prompt("What is your name?");
     alert("Your name is " + outlawName);
-    console.log(outlawName);
     text("USE ARROW TO CONTINUE", width/2, 200);
   }
   else{
@@ -340,18 +344,15 @@ function displayDemo(){
     text("Y/N", 300, 700);
   }
   if (question === 'true'){
-    // question = 'none';
     if (npcDemo === 'off'){
       text("PRESS THE ARROW KEY TO CONTINUE", 300, 600);
     }
     if (keyCode === 39 && screen === 'demo'){
       movementDemo = 'on';
-      console.log(movementDemo);
       text("Remember to use the 'd' key to move forward", 300, 700);
     }
     if (key === 'd' && movementDemo === 'on'){
       text("And the 'a' key to go backwards", 300, 700);
-      console.log(movementDemo);
     }
     if (key === 'a'&& movementDemo === 'on'){
       text("And the spacebar to jump", 300, 700);
@@ -360,12 +361,15 @@ function displayDemo(){
       text("Amazing! To move through the environment just keep walking", 300, 700);
       movementDemo = 'off';
       npcDemo = 'on';
-      console.log(movementDemo);
+      npcxSpot = width - 250;
     }
     if (xSpot === width + 200 || xSpot === 0){
       text("Who's that in the distance? Go talk to them.", 300, 600);
+    }
+    if (npcDemo === 'on'){
       displayNPC();
     }
+    question = 'none';
   }
   else if (question === 'false'){
     screen = 'play';
