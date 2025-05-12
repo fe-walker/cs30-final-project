@@ -105,6 +105,10 @@ function keyPressed(){
 
   if (screen === 'demo'){
     if (key === 'y'){
+      console.log('question is ' + question);
+      console.log('page is ' + page);
+      console.log('npc demo is ' + npcDemo);
+      console.log('mouvement demo is ' + movementDemo);
       question = 'true';
     }
     if (key === 'n'){
@@ -338,7 +342,7 @@ function displayDemo(){
   textAlign(CENTER);
   textFont(myFont);
 
-  if (question === 'none'){
+  if (question === 'none' && page === 0){
     text("Welcome to the wild west " + outlawName + "!", 300, 600);
     text("Would you like to continue with the demo?", 300, 650);
     text("Y/N", 300, 700);
@@ -369,58 +373,10 @@ function displayDemo(){
     if (npcDemo === 'on'){
       displayNPC();
     }
-    question = 'none';
+    // question = 'none';
   }
   else if (question === 'false'){
     screen = 'play';
     question = 'none';
   }
 }
-
-
-// get rid of all this eventually
-
-// function showStoryLine(){
-//   textSize(20);
-//   let lineOfText = introText[y];
-//   text(lineOfText, width/2, height/2);
-// }
-
-// function readyToPlay(){
-//   if (y > introText.length){
-//     text("READY TO PLAY?", width/2, 300);
-//     text("Y/N", width/2, 400);
-//     if (key === 'y'){
-//       screen = 'demo';
-//     }
-//     else if (key === 'n'){
-//       text("If you aren't ready you can press 'i' to view instructions or enter to see intro again", width/2, 500);
-//     }
-//   }
-// }
-
-// function demoText(){
-//   fill("white");
-//   textSize(20);
-//   textAlign(CENTER);
-//   textFont(myFont);
-//   text("Welcome to the wild west " + outlawName + "!", 300, 600);
-//   text("Would you like to continue with the demo?", 300, 650);
-//   text("Y/N", 300, 700);
-//   if (key === 'y'){
-//     displayDemo();
-//   }
-//   else if (key === 'n'){
-//     screen = 'play';
-//   }
-//   return;
-// }
-
-
-
-
-
-
-
-
-// when an object appears, if the distance is around 50-25 pixels, trigger a text function thing most likely will be asking a question
