@@ -187,8 +187,10 @@ function keyPressed(){
   // my shortcut 
   if (key === "f"){
     outlawName = "Faith";
-    screen = 'demo';
-    page = 1;
+    screen = 'play';
+    page = 2;
+    // npcDemo = 'on';
+    console.log(npcName);
   }
   if (key === 'b'){
     console.log(question);
@@ -216,7 +218,6 @@ function changeScreenIfNeeded(){
     displayDemo();
 
     if (page === 1){
-      question = 'none';
       npcName = "High class lady";
       npc = nobleLady;
     }
@@ -367,14 +368,16 @@ function displayDemo(){
       npcDemo = 'on';
       npcxSpot = width - 250;
     }
-    if (xSpot === width + 200 || xSpot === 0){
-      text("Who's that in the distance? Go talk to them.", 300, 600);
-    }
-    if (npcDemo === 'on'){
-      displayNPC();
-    }
-    // question = 'none';
   }
+  else  if (xSpot === width + 200 || xSpot === 0 && page === 1){
+    question === 'none';
+    text("Who's that in the distance? Go talk to them.", 300, 600);
+  }
+  else  if (npcDemo === 'on'){
+    displayNPC();
+  }
+  // question = 'none';
+  
   else if (question === 'false'){
     screen = 'play';
     question = 'none';
