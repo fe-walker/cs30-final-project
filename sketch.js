@@ -5,6 +5,13 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+// things to add 
+// -sound 
+
+// to-do
+// - get actual game play started 
+// - change text arrays
+
 // state variables
 let screen = "start";
 let page = 0;
