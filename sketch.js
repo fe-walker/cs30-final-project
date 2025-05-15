@@ -44,7 +44,8 @@ let introText = ["USE ARROW TO CONTINUE", "You are an outlaw notorious for evadi
   "Yet you'll always get the job done", "Your main motivation has always been money", "And you've frequently worked as a bounty hunter", "This is a journey of self discovery", 
   "As you discover how truly wonderful the world and humanity can be", "The people you meet can change your cynical attitude, if you allow them"]; 
 
-let nobleLadyText = ["hello!", "You must be " + outlawName + '!'];
+let nobleLadyText = ["hello!", "You must be " + outlawName + '!', 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
+  'head into town to begin playing!', 'good luck ' + outlawName + '!'];
 
 // functions
 
@@ -149,6 +150,7 @@ function keyPressed(){
     }
     if (keyCode === 39){
       y++;
+      console.log(y);
     }
   }
 
@@ -244,6 +246,7 @@ function changeScreenIfNeeded(){
     background(backDrop3);
     displayEnvironment();
     displayPlayer();
+    // starts on page 2 with the town 
 
 
     // decide which pages the other ones appear on and which pages i change the background on 
@@ -293,6 +296,13 @@ function talkToNpc(){
         textSize(20);
         let lineOfText = nobleLadyText[y];
         text(lineOfText, width - 1000, 600);
+        if (y > nobleLadyText.length - 2){
+          text("Walk towards the town", width - 1000, 600);
+          npcDemo = 'off';
+          screen = 'play';
+          question = 'none';
+          y = 0;
+        }
       }
       else if(npc === farmer){
         displayNPC();
@@ -388,7 +398,7 @@ function displayDemo(){
       text("PRESS THE ARROW KEY TO CONTINUE", 300, 600);
     }
   }
-  if (keyCode === 39){
+  if (keyCode === 39 && npcDemo === 'off'){
     question = 'none';
     movementDemo = 'on';
     text("Remember to use the 'd' key to move forward", 300, 700);
