@@ -47,6 +47,7 @@ let introText = ["USE ARROW TO CONTINUE", "You are an outlaw notorious for evadi
 let nobleLadyText = ["hello!", "You must be " + outlawName + '!', 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
   'head into town to begin playing!', 'good luck ' + outlawName + '!'];
 
+
 // functions
 
 function setup() {
@@ -137,7 +138,6 @@ function keyPressed(){
       if (xSpot > width){
         xSpot = 0;
         page++;
-        // question === 'none';
         console.log("page is" + page);
       }
       else{
@@ -201,17 +201,13 @@ function keyPressed(){
   // my shortcut 
   if (key === "f"){
     outlawName = "Faith";
-    screen = 'demo';
-    page = 1;
-    npcDemo = 'on';
-    npcxSpot = width - 250;
-    // console.log('npc x spot ' + npcxSpot);
-    // console.log('npc y spot ' + npcySpot);
-    // console.log(npcName);
+    screen = 'play';
+    page = 2;
+
   }
-  if (key === 'b'){
-    console.log(question);
-  }
+  // if (key === 'b'){
+  //   console.log(question);
+  // }
 }
 
 function changeScreenIfNeeded(){
@@ -236,7 +232,6 @@ function changeScreenIfNeeded(){
     displayDemo();
 
     if (page === 1){
-      // question = 'none';
       npcName = "High class lady";
       npc = nobleLady;
     }
@@ -358,11 +353,7 @@ function displayIntro(){
   if (keyCode === 39 && !outlawName){
     outlawName = prompt("What is your name?");
     alert("Your name is " + outlawName);
-    // text("USE ARROW TO CONTINUE", width/2, 200);
   }
-  // else{
-  //   text("USE ARROW TO CONTINUE", width/2, 200);
-  // }
 
   textSize(20);
   let lineOfText = introText[y];
@@ -421,10 +412,8 @@ function displayDemo(){
     question = 'none';
   }
   else  if (npcDemo === 'on'){
-    // question = 'none';
     displayNPC();
   }
-  // question = 'none';
   
   else if (question === 'false'){
     screen = 'play';
