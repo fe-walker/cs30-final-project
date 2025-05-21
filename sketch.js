@@ -47,6 +47,20 @@ let introText = ["USE ARROW TO CONTINUE", "You are an outlaw notorious for evadi
 let nobleLadyText = ["hello!", "You must be " + outlawName + '!', 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
   'head into town to begin playing!', 'good luck ' + outlawName + '!'];
 
+let barKeepText = ["Can i get you anything sir?", "I ain't never seen you 'round these parts... you new in town?", 'i see...',
+  'be awful careful.. our sheriff aint lousy, and you dont seem very fond of the law', 'i know men like you, travellin round.. here for a good time but not a long time am i right?'];
+
+let farmerText = ["who's there?", "what are you doing on my land?", 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
+  'head into town to begin playing!', 'good luck ' + outlawName + '!'];
+
+let cowgirlText = ["hello!", "You must be " + outlawName + '!', 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
+  'head into town to begin playing!', 'good luck ' + outlawName + '!'];
+
+let sheriff1Text = ["hello!", "You must be " + outlawName + '!', 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
+  'head into town to begin playing!', 'good luck ' + outlawName + '!'];
+
+let sheriff2Text = ["hello!", "You must be " + outlawName + '!', 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
+  'head into town to begin playing!', 'good luck ' + outlawName + '!'];
 
 // functions
 
@@ -65,6 +79,7 @@ function preload(){
   sheriff2 = loadImage("sheriff-no-2.png");
   cowgirl = loadImage("cowgirl.png");
   nobleLady = loadImage("noble-lady.png");
+  barKeep = loadImage("bar-keep.png");
 
   // backgrounds
   backDrop2 = loadImage("instructions-backdrop.jpg");
@@ -189,7 +204,7 @@ function keyPressed(){
   }
 
 
-  // if (screen === 'end'){}
+
 
   // if (key === 'y'){
   //   question = 'true';
@@ -242,10 +257,72 @@ function changeScreenIfNeeded(){
     displayEnvironment();
     displayPlayer();
     // starts on page 2 with the town 
-
-
+    if (page === 2){
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 3){
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 4){
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 5){
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 6){
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 7){
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 8){
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 9){
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 10){
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 11){
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 12){
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 13){
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
     // decide which pages the other ones appear on and which pages i change the background on 
     // decide amount of pages that i need
+  }
+  if (screen === 'end'){
+    background();
+    displayEndScreen();
   }
 }
 
@@ -260,6 +337,20 @@ function displayStartScreen(){
   fill('white');
   text('PRESS ENTER TO START', width/2 + 5, height/2 + 250);
   text('PRESS i FOR INSTRUCTIONS', width/2 + 5, height/2 + 300);
+}
+
+function displayEndScreen(){
+  fill('white');
+  rect(width/2 - 250, height/2 - 275, 500, 100);
+  textSize(36);
+  textAlign(CENTER);
+  textFont(myFont);
+  fill('brown');
+  // add ending text
+  // text('OUTLAW ADVENTURE', width/2 - 5, height/2 - 225);
+  // fill('white');
+  // text('PRESS ENTER TO START', width/2 + 5, height/2 + 250);
+  // text('PRESS i FOR INSTRUCTIONS', width/2 + 5, height/2 + 300);
 }
 
 function displayEnvironment(){
@@ -299,21 +390,126 @@ function talkToNpc(){
           y = 0;
         }
       }
+      if (npc === barKeep){
+        textSize(20);
+        let lineOfText = barKeepText[y];
+        text(lineOfText, width - 1000, 600);
+        npcQuestions();
+        if (y > barKeepText.length - 2){
+          text("add text here", width - 1000, 600);
+          question = 'none';
+          y = 0;
+        }
+      }
       else if(npc === farmer){
-        displayNPC();
+        textSize(20);
+        let lineOfText = farmerText[y];
+        text(lineOfText, width - 1000, 600);
+        if (y > farmerText.length - 2){
+          text("add text here", width - 1000, 600);
+          question = 'none';
+          y = 0;
+        }
       }
       else if(npc === cowgirl){
-        displayNPC();
+        textSize(20);
+        let lineOfText = cowgirlText[y];
+        text(lineOfText, width - 1000, 600);
+        if (y > cowgirlText.length - 2){
+          text("add text here", width - 1000, 600);
+          question = 'none';
+          y = 0;
+        }
       }
       else if(npc === sheriff1){
-        displayNPC();
+        textSize(20);
+        let lineOfText = sheriff1Text[y];
+        text(lineOfText, width - 1000, 600);
+        if (y > sheriff1Text.length - 2){
+          text("add text here", width - 1000, 600);
+          question = 'none';
+          y = 0;
+        }
       }
       else if(npc === sheriff2){
-        displayNPC();
+        textSize(20);
+        let lineOfText = sheriff2Text[y];
+        text(lineOfText, width - 1000, 600);
+        if (y > sheriff2Text.length - 2){
+          text("add text here", width - 1000, 600);
+          question = 'none';
+          y = 0;
+        }
       }
     }
     else if (question === 'false'){
-      // screen = 'play';
+      textSize(20);
+      text('you may regret this. keep walking i suppose', width - 1000, 600);
+    }
+  }
+}
+
+function npcQuestions(){
+  // might add some user inputs here 
+  if (npc === barKeep){
+    textSize(20);
+    if (y === 1){
+      text("Y/N", 300, 700);
+      if (question === 'true'){
+        // get him a drink
+      }
+      else if (question === 'false'){
+      // don't get him a drink 
+      }
+    }
+    // call this each time the NPC asks the user a question
+  }
+  else if(npc === farmer){
+    textSize(20);
+    if (y === ){
+      text("Y/N", 300, 700);
+      if (question === 'true'){
+        
+      }
+      else if (question === 'false'){
+       
+      }
+    }
+  }
+  else if(npc === cowgirl){
+    textSize(20);
+    if (y === ){
+      text("Y/N", 300, 700);
+      if (question === 'true'){
+        
+      }
+      else if (question === 'false'){
+       
+      }
+    }
+  }
+  else if(npc === sheriff1){
+    textSize(20);
+    if (y === ){
+      text("Y/N", 300, 700);
+      if (question === 'true'){
+        
+      }
+      else if (question === 'false'){
+       
+      }
+    }
+  }
+  else if(npc === sheriff2){
+    textSize(20);
+    if (y === ){
+      text("Y/N", 300, 700);
+      if (question === 'true'){
+        
+      }
+      else if (question === 'false'){
+       
+      }
     }
   }
 }
