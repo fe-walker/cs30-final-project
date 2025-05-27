@@ -1,6 +1,6 @@
 // Outlaw Adventure
 // Faith Walker
-// mm/dd/2025
+// 06/13/2025
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
@@ -11,6 +11,8 @@
 // to-do
 // - get actual game play started 
 // - change text arrays
+// - make jump animation 
+// - make walking smoother
 
 // state variables
 let screen = "start";
@@ -39,10 +41,9 @@ let npcName;
 let y = 0;
 
 // arrays
-let introText = ["USE ARROW TO CONTINUE", "You are an outlaw notorious for evading the law", "You move around from town to town across the desert, never tied down",
-  "You are a lone wolf and hate having people tag along on your journey", "Many of the folks you've encountered don't have fond memories of you", 
-  "Yet you'll always get the job done", "Your main motivation has always been money", "And you've frequently worked as a bounty hunter", "This is a journey of self discovery", 
-  "As you discover how truly wonderful the world and humanity can be", "The people you meet can change your cynical attitude, if you allow them"]; 
+let introText = ["USE ARROW TO CONTINUE", "You are an outlaw notorious for evading the law", "meet new people as you travel up the missisipi river", "the landscape will change as you head north",
+  "and the laws get stricter."
+]; 
 
 let nobleLadyText = ["hello!", "You must be " + outlawName + '!', 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
   'head into town to begin playing!', 'good luck ' + outlawName + '!'];
@@ -50,8 +51,9 @@ let nobleLadyText = ["hello!", "You must be " + outlawName + '!', 'this is the e
 let barKeepText = ["Can i get you anything sir?", "I ain't never seen you 'round these parts... you new in town?", 'i see...',
   'be awful careful.. our sheriff aint lousy, and you dont seem very fond of the law', 'i know men like you, travellin round.. here for a good time but not a long time am i right?'];
 
-let farmerText = ["who's there?", "what are you doing on my land?", 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
-  'head into town to begin playing!', 'good luck ' + outlawName + '!'];
+let farmerText = ["who's there?", "what are you doing on my land?", 'i see...', "what's your name kid?", outlawName + " huh? never met anyone with that name..",
+  'Need shelter for the night?'];
+  // continue in new array based on y/n
 
 let cowgirlText = ["hello!", "You must be " + outlawName + '!', 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
   'head into town to begin playing!', 'good luck ' + outlawName + '!'];
@@ -139,13 +141,9 @@ function keyPressed(){
     if (key === 'n'){
       question = 'false';
     }
-    if (key === "w"){
-    }
     if (key === "a"){
       // walk backwards
       xSpot = xSpot - 25;
-    }
-    if (key === "s"){
     }
     if (key === "d"){
       // walk forward
@@ -177,13 +175,9 @@ function keyPressed(){
     if (key === 'n'){
       question = 'false';
     }
-    if (key === "w"){
-    }
     if (key === "a"){
     // walk backwards
       xSpot = xSpot - 25;
-    }
-    if (key === "s"){
     }
     if (key === "d"){
     // walk forward
@@ -225,6 +219,7 @@ function keyPressed(){
   // }
 }
 
+
 function changeScreenIfNeeded(){
   if (screen === "start"){
     // display start screen
@@ -246,6 +241,24 @@ function changeScreenIfNeeded(){
     displayPlayer();
     displayDemo();
 
+    if (keyIsDown(65) === true){
+      // walk backwards
+      xSpot = xSpot - 25;
+    }
+    if (keyIsDown(68) === true){
+      // walk forward
+      // I want the movement to be smoother, so if i hold down it moves 
+      if (xSpot > width){
+        xSpot = 0;
+        page++;
+        console.log("page is" + page);
+      }
+      else{
+        xSpot = xSpot + 25;
+        console.log("page is" + page);
+      }
+    }
+
     if (page === 1){
       npcName = "High class lady";
       npc = nobleLady;
@@ -256,6 +269,25 @@ function changeScreenIfNeeded(){
     background(backDrop3);
     displayEnvironment();
     displayPlayer();
+
+    if (keyIsDown(65) === true){
+      // walk backwards
+      xSpot = xSpot - 25;
+    }
+    if (keyIsDown(68) === true){
+      // walk forward
+      // I want the movement to be smoother, so if i hold down it moves 
+      if (xSpot > width){
+        xSpot = 0;
+        page++;
+        console.log("page is" + page);
+      }
+      else{
+        xSpot = xSpot + 25;
+        console.log("page is" + page);
+      }
+    }
+
     // starts on page 2 with the town 
     if (page === 2){
       background(backDrop3);
@@ -449,70 +481,70 @@ function talkToNpc(){
   }
 }
 
-function npcQuestions(){
-  // might add some user inputs here 
-  if (npc === barKeep){
-    textSize(20);
-    if (y === 1){
-      text("Y/N", 300, 700);
-      if (question === 'true'){
-        // get him a drink
-      }
-      else if (question === 'false'){
-      // don't get him a drink 
-      }
-    }
-    // call this each time the NPC asks the user a question
-  }
-  else if(npc === farmer){
-    textSize(20);
-    if (y === ){
-      text("Y/N", 300, 700);
-      if (question === 'true'){
+// function npcQuestions(){
+//   // might add some user inputs here 
+//   if (npc === barKeep){
+//     textSize(20);
+//     if (y === 1){
+//       text("Y/N", 300, 700);
+//       if (question === 'true'){
+//         // get him a drink
+//       }
+//       else if (question === 'false'){
+//       // don't get him a drink 
+//       }
+//     }
+//     // call this each time the NPC asks the user a question
+//   }
+//   else if(npc === farmer){
+//     textSize(20);
+//     if (y === ){
+//       text("Y/N", 300, 700);
+//       if (question === 'true'){
         
-      }
-      else if (question === 'false'){
+//       }
+//       else if (question === 'false'){
        
-      }
-    }
-  }
-  else if(npc === cowgirl){
-    textSize(20);
-    if (y === ){
-      text("Y/N", 300, 700);
-      if (question === 'true'){
+//       }
+//     }
+//   }
+//   else if(npc === cowgirl){
+//     textSize(20);
+//     if (y === ){
+//       text("Y/N", 300, 700);
+//       if (question === 'true'){
         
-      }
-      else if (question === 'false'){
+//       }
+//       else if (question === 'false'){
        
-      }
-    }
-  }
-  else if(npc === sheriff1){
-    textSize(20);
-    if (y === ){
-      text("Y/N", 300, 700);
-      if (question === 'true'){
+//       }
+//     }
+//   }
+//   else if(npc === sheriff1){
+//     textSize(20);
+//     if (y === ){
+//       text("Y/N", 300, 700);
+//       if (question === 'true'){
         
-      }
-      else if (question === 'false'){
+//       }
+//       else if (question === 'false'){
        
-      }
-    }
-  }
-  else if(npc === sheriff2){
-    textSize(20);
-    if (y === ){
-      text("Y/N", 300, 700);
-      if (question === 'true'){
+//       }
+//     }
+//   }
+//   else if(npc === sheriff2){
+//     textSize(20);
+//     if (y === ){
+//       text("Y/N", 300, 700);
+//       if (question === 'true'){
         
-      }
-      else if (question === 'false'){
+//       }
+//       else if (question === 'false'){
        
-      }
-    }
-  }
-}
+//       }
+//     }
+//   }
+// }
 
 
 function displayInstructions(){
