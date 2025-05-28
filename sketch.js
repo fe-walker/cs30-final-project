@@ -42,7 +42,7 @@ let y = 0;
 
 // arrays
 let introText = ["USE ARROW TO CONTINUE", "You are an outlaw notorious for evading the law", "meet new people as you travel up the missisipi river", "the landscape will change as you head north",
-  "and the laws get stricter."
+  "and the laws get stricter.", "speak with townsfolk and sheriffs", "meet animal friends", 'and see beautiful sights', "don't worry about a goal", "just play and enjoy the old west"
 ]; 
 
 let nobleLadyText = ["hello!", "You must be " + outlawName + '!', 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
@@ -50,19 +50,35 @@ let nobleLadyText = ["hello!", "You must be " + outlawName + '!', 'this is the e
 
 let barKeepText = ["Can i get you anything sir?", "I ain't never seen you 'round these parts... you new in town?", 'i see...',
   'be awful careful.. our sheriff aint lousy, and you dont seem very fond of the law', 'i know men like you, travellin round.. here for a good time but not a long time am i right?'];
+// may not need y/n text arrays
+// let barKeepTextY = [];
+// let barKeepTextN = [];
 
 let farmerText = ["who's there?", "what are you doing on my land?", 'i see...', "what's your name kid?", outlawName + " huh? never met anyone with that name..",
   'Need shelter for the night?'];
   // continue in new array based on y/n
+let farmerTextY = ["i've got space in my barn if that's suitible to your taste", "my wife will get a nice ol' hay bed ready for ya"];
+let farmerTextN = ["alright then. suit yourslef.", "coyotes are real bad 'round here, so be careful when you're leavin'"];
+// for the next day
+let farmerText2 = ["mornin' sir", "heading out i see?", "well safe travels", "and watch out for them coyotes"];
 
-let cowgirlText = ["hello!", "You must be " + outlawName + '!', 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
-  'head into town to begin playing!', 'good luck ' + outlawName + '!'];
+// let cowgirlText = ["", ];
+// let cowgirlTextY = [];
+// let cowgirlTextN = [];
 
-let sheriff1Text = ["hello!", "You must be " + outlawName + '!', 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
-  'head into town to begin playing!', 'good luck ' + outlawName + '!'];
+let sheriff1Text = ["You new in town? I ain't never met you before.. and I know this whole town..", "where you headed?", "i see.. i see...", "anything i can do for you?"];
+let sheriff1TextY = ["what might that be sir?"];
+let sheriff1TextN = ["no?", "well then.. safe travels, and I better not see you after sunrise or I'm brining you in", "and be careful, other sheriffs ain't as kind as i"];
 
-let sheriff2Text = ["hello!", "You must be " + outlawName + '!', 'this is the end of the demo, remember to use the arrow keys to continue speaking to NPCs',
-  'head into town to begin playing!', 'good luck ' + outlawName + '!'];
+let sheriff2Text = ["Well, well, well... if it ain't " + outlawName, "i've heard quite a bit about you", "I'd hope you heard about me", "but considering you got the guts to show your face in my town", "either you're a stupid idiot", "or one ballsy fella.",
+  "you've got a death wish comin' into my town", "I've got a bounty on your head " + outlawName, "and a big one", "do you even know how much people want for you?"];
+let sheriff2TextY = ["then i'm sure you know people are damn desperate for your head", "includin' me.", "i can't risk my reputation by letting you go", "even if you ain't causing no trouble", "so i suggest you kindly co-operate"];
+let sheriff2TextN = ["well it's enough for a man to be set for life", "people set bets on who's gonna catch you", "the crown is huntin' you", "and even the damn quebecois are out to get you", "i ain't letting you slip from my grasp", "so, turn yourself in, and maybe i'll spare you."];
+let sheriff2TextCoOperate = ["at least you know what's good for ya... ", "now, nice and slowly empty your pockets", "and we'll take you in"];
+let sheriff2TextFight = ["stubborn as a mule you are...", "maybe you do have a death wish", "i got men all over this town with orders to shoot", "now you can duel me, and you'll die either way", "but at least you'd have the satisfaction of takin' me out first"];
+let duelYText = ["you gonna be a good man and respect the rules of a duel?", "ten paces, and don't even think 'bout runnin'", "my men will get you before you can even blink"];
+let duelNText = ["you ain't gonna fight for your life?", "shame..", "well, i'll give you the choice again", "turn yourself in, and you'll have a fair trial"];
+// add i shot the sheriff as end song????
 
 // functions
 
@@ -295,62 +311,94 @@ function changeScreenIfNeeded(){
       npc = nobleLady;
     }
     if (page === 3){
+
+      // go into bar and talk to barkeep
+
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
     if (page === 4){
+
+      // inside bar
+
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
     if (page === 5){
+
+      // town with bar and sheriff office
+
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
     if (page === 6){
+
+      // desert background
+      
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
     if (page === 7){
+
+      // night background
+
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
     if (page === 8){
+
+      // daytime desert
+
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
     if (page === 9){
+
+      // high quality desert pic?
+
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
     if (page === 10){
+
+      // farm house
+
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
     if (page === 11){
+
+      // wheat and farm
+
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
     if (page === 12){
+
+      // cow 1
+
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
     if (page === 13){
+
+      // pass the cow
+
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
-    // decide which pages the other ones appear on and which pages i change the background on 
-    // decide amount of pages that i need
+    // addd more pages
   }
   if (screen === 'end'){
     background();
