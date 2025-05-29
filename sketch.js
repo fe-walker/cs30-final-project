@@ -62,13 +62,13 @@ let farmerTextN = ["alright then. suit yourslef.", "coyotes are real bad 'round 
 // for the next day
 let farmerText2 = ["mornin' sir", "heading out i see?", "well safe travels", "and watch out for them coyotes"];
 
-// let cowgirlText = ["", ];
-// let cowgirlTextY = [];
-// let cowgirlTextN = [];
-
 let sheriff1Text = ["You new in town? I ain't never met you before.. and I know this whole town..", "where you headed?", "i see.. i see...", "anything i can do for you?"];
 let sheriff1TextY = ["what might that be sir?"];
 let sheriff1TextN = ["no?", "well then.. safe travels, and I better not see you after sunrise or I'm brining you in", "and be careful, other sheriffs ain't as kind as i"];
+
+// let cowgirlText = ["", ];
+// let cowgirlTextY = [];
+// let cowgirlTextN = [];
 
 let sheriff2Text = ["Well, well, well... if it ain't " + outlawName, "i've heard quite a bit about you", "I'd hope you heard about me", "but considering you got the guts to show your face in my town", "either you're a stupid idiot", "or one ballsy fella.",
   "you've got a death wish comin' into my town", "I've got a bounty on your head " + outlawName, "and a big one", "do you even know how much people want for you?"];
@@ -398,7 +398,96 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    // addd more pages
+    if (page === 14){
+
+      // night 2
+
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 15){
+
+      // morning sheriff
+
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 16){
+
+      // twins towers and inn
+
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 16){
+
+      // inn and prison
+
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 17){
+
+      // river
+
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 18){
+
+      // tent
+
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 19){
+
+      // view of landscape w long river
+
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 20){
+
+      // town in distance **eerie**
+
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 21){
+
+      // town sign
+
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 22){
+
+      // town with sheriff 2
+
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 23){
+
+      // epic duel starts here
+
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+
+    // add more pages
   }
   if (screen === 'end'){
     background();
