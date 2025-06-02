@@ -312,7 +312,7 @@ function changeScreenIfNeeded(){
     }
     if (page === 3){
 
-      // go into bar and talk to barkeep
+      // inside bar
 
       background(backDrop3);
       npcName = "High class lady";
@@ -320,7 +320,7 @@ function changeScreenIfNeeded(){
     }
     if (page === 4){
 
-      // inside bar
+      // town with bar and sheriff office
 
       background(backDrop3);
       npcName = "High class lady";
@@ -328,21 +328,13 @@ function changeScreenIfNeeded(){
     }
     if (page === 5){
 
-      // town with bar and sheriff office
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
-    }
-    if (page === 6){
-
       // desert background
       
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 7){
+    if (page === 6){
 
       // night background
 
@@ -350,7 +342,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 8){
+    if (page === 7){
 
       // daytime desert
 
@@ -358,7 +350,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 9){
+    if (page === 8){
 
       // high quality desert pic?
 
@@ -366,7 +358,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 10){
+    if (page === 9){
 
       // farm house
 
@@ -374,7 +366,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 11){
+    if (page === 10){
 
       // wheat and farm
 
@@ -382,15 +374,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 12){
-
-      // cow 1
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
-    }
-    if (page === 13){
+    if (page === 11){
 
       // pass the cow
 
@@ -398,7 +382,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 14){
+    if (page === 12){
 
       // night 2
 
@@ -406,7 +390,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 15){
+    if (page === 13){
 
       // morning sheriff
 
@@ -414,23 +398,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 16){
-
-      // twins towers and inn
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
-    }
-    if (page === 16){
-
-      // inn and prison
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
-    }
-    if (page === 17){
+    if (page === 14){
 
       // river
 
@@ -438,7 +406,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 18){
+    if (page === 15){
 
       // tent
 
@@ -446,7 +414,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 19){
+    if (page === 16){
 
       // view of landscape w long river
 
@@ -454,7 +422,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 20){
+    if (page === 17){
 
       // town in distance **eerie**
 
@@ -462,7 +430,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 21){
+    if (page === 19){
 
       // town sign
 
