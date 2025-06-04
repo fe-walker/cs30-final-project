@@ -384,13 +384,21 @@ function changeScreenIfNeeded(){
     }
     if (page === 12){
 
-      // night 2
+      // barn?
 
       background(backDrop3);
       npcName = "High class lady";
       npc = nobleLady;
     }
     if (page === 13){
+
+      // night 2
+
+      background(backDrop3);
+      npcName = "High class lady";
+      npc = nobleLady;
+    }
+    if (page === 14){
 
       // morning sheriff
 
