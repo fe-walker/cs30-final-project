@@ -406,7 +406,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 14){
+    if (page === 15){
 
       // river
 
@@ -414,7 +414,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 15){
+    if (page === 16){
 
       // tent
 
@@ -422,7 +422,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 16){
+    if (page === 17){
 
       // view of landscape w long river
 
@@ -430,7 +430,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 17){
+    if (page === 18){
 
       // town in distance **eerie**
 
@@ -446,7 +446,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 22){
+    if (page === 20){
 
       // town with sheriff 2
 
@@ -454,7 +454,7 @@ function changeScreenIfNeeded(){
       npcName = "High class lady";
       npc = nobleLady;
     }
-    if (page === 23){
+    if (page === 21){
 
       // epic duel starts here
 
