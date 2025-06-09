@@ -42,6 +42,8 @@ let backDrop11;
 let backDrop12;
 let farmBackDrop;
 let backDrop13;
+let backDrop14;
+let backDrop15;
 let town2BackDrop;
 let town3BackDrop;
 let town3BackDrop3;
@@ -140,7 +142,7 @@ function preload(){
   town3BackDrop = loadImage("town-sign.png");
   town3BackDrop2 = loadImage("sheriff2-town1.png");
   town3BackDrop3 = loadImage("sheriff2-town2.png");
-  jailBackDrop = loadImage("jailcell.png.png");
+  jailBackDrop = loadImage("jailcell.png");
   backDrop12 = loadImage("wanted-poster.png");
   backDrop13 = loadImage("end-screen.png");
 }
@@ -364,12 +366,7 @@ function changeScreenIfNeeded(){
       background(backDrop5);
     }
     if (page === 8){
-
-      // high quality desert pic?
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(backDrop15);
     }
     if (page === 9){
       background(farmBackDrop);
@@ -402,12 +399,7 @@ function changeScreenIfNeeded(){
       npc = cowgirl;
     }
     if (page === 17){
-
-      // view of landscape w long river
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(backDrop14);
     }
     if (page === 18){
       background(town3BackDrop);
