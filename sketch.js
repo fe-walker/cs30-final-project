@@ -9,7 +9,6 @@
 // -sound 
 
 // to-do
-// - get actual game play started 
 // - change text arrays
 // - make jump animation 
 // - make walking smoother
@@ -23,10 +22,31 @@ let npcDemo = 'off';
 
 // image variables
 let outlaw;
+let npc;
+
+// backgrounds
 let backDrop;
 let backDrop3;
 let backDrop2;
-let npc;
+let townBackDrop;
+let barBackDrop;
+let backDrop4;
+let nightBackDrop;
+let backDrop5;
+let backDrop6;
+let backDrop7;
+let backDrop8;
+let backDrop9;
+let backDrop10;
+let backDrop11;
+let backDrop12;
+let farmBackDrop;
+let backDrop13;
+let town2BackDrop;
+let town3BackDrop;
+let town3BackDrop3;
+let town3BackDrop2;
+let jailBackDrop;
 
 // movement/placement variables
 let xSpot = 50;
@@ -104,10 +124,28 @@ function preload(){
   backDrop3 = loadImage("desert.png");
   backDrop = loadImage("start-screen.webp");
 
+  townBackDrop = loadImage("town.png");
+  barBackDrop = loadImage("inside-of-bar.png");
+  backDrop4 = loadImage("desert-view.png");
+  nightBackDrop = loadImage("night one.png");
+  backDrop5 = loadImage("daytimedesert.png");
+  farmBackDrop = loadImage("farm.png");
+  backDrop6 = loadImage("wheatandcow.png");
+  backDrop7 = loadImage("passcow.png");
+  backDrop8 = loadImage("barn.png");
+  backDrop9 = loadImage("night-two.png");
+  town2BackDrop = loadImage("sheriff1-town.png");
+  backDrop10 = loadImage("start-of-river.png");
+  backDrop11 = loadImage("river-and-tent.png");
+  town3BackDrop = loadImage("town-sign.png");
+  town3BackDrop2 = loadImage("sheriff2-town1.png");
+  town3BackDrop3 = loadImage("sheriff2-town2.png");
+  jailBackDrop = loadImage("jailcell.png.png");
+  backDrop12 = loadImage("wanted-poster.png");
+  backDrop13 = loadImage("end-screen.png");
 }
 
 function draw() {
-  // want to rotate through background based on time of day/area?
   changeScreenIfNeeded();
   console.log(screen);
 }
@@ -306,49 +344,24 @@ function changeScreenIfNeeded(){
 
     // starts on page 2 with the town 
     if (page === 2){
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(townBackDrop);
     }
     if (page === 3){
-
-      // inside bar
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(barBackDrop);
+      npcName = "Bar Keep";
+      npc = barKeep; 
     }
     if (page === 4){
-
-      // town with bar and sheriff office
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(townBackDrop);
     }
     if (page === 5){
-
-      // desert background
-      
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(backDrop4);
     }
     if (page === 6){
-
-      // night background
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(nightBackDrop);
     }
     if (page === 7){
-
-      // daytime desert
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(backDrop5);
     }
     if (page === 8){
 
@@ -359,68 +372,34 @@ function changeScreenIfNeeded(){
       npc = nobleLady;
     }
     if (page === 9){
-
-      // farm house
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(farmBackDrop);
+      npcName = "Farmer";
+      npc = farmer;
     }
     if (page === 10){
-
-      // wheat and farm
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(backDrop6);
     }
     if (page === 11){
-
-      // pass the cow
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(backDrop7);
     }
     if (page === 12){
-
-      // barn?
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(backDrop8);
     }
     if (page === 13){
-
-      // night 2
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(backDrop9);
     }
     if (page === 14){
-
-      // morning sheriff
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(town2BackDrop);
+      npcName = "Sheriff";
+      npc = sheriff1;
     }
     if (page === 15){
-
-      // river
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(backDrop10);
     }
     if (page === 16){
-
-      // tent
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(backDrop11);
+      npcName = "Cowgirl";
+      npc = cowgirl;
     }
     if (page === 17){
 
@@ -431,28 +410,15 @@ function changeScreenIfNeeded(){
       npc = nobleLady;
     }
     if (page === 18){
-
-      // town in distance **eerie**
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(town3BackDrop);
     }
     if (page === 19){
-
-      // town sign
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(town3BackDrop2);
     }
     if (page === 20){
-
-      // town with sheriff 2
-
-      background(backDrop3);
-      npcName = "High class lady";
-      npc = nobleLady;
+      background(town3BackDrop3);
+      npcName = "Evil Sheriff";
+      npc = sheriff2;
     }
     if (page === 21){
 
@@ -466,7 +432,7 @@ function changeScreenIfNeeded(){
     // add more pages
   }
   if (screen === 'end'){
-    background();
+    background(backDrop13);
     displayEndScreen();
   }
 }
