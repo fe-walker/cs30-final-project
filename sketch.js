@@ -145,6 +145,8 @@ function preload(){
   jailBackDrop = loadImage("jailcell.png");
   backDrop12 = loadImage("wanted-poster.png");
   backDrop13 = loadImage("end-screen.png");
+  backDrop14 = loadImage("river-view.jpg");
+  backDrop15 = loadImage("american-west.jpg");
 }
 
 function draw() {
@@ -237,7 +239,6 @@ function keyPressed(){
     }
     if (key === "d"){
     // walk forward
-    // I want the movement to be smoother, so if i hold down it moves 
       if (xSpot > width){
         xSpot = 0;
         page++;
@@ -303,7 +304,6 @@ function changeScreenIfNeeded(){
     }
     if (keyIsDown(68) === true){
       // walk forward
-      // I want the movement to be smoother, so if i hold down it moves 
       if (xSpot > width){
         xSpot = 0;
         page++;
@@ -332,7 +332,6 @@ function changeScreenIfNeeded(){
     }
     if (keyIsDown(68) === true){
       // walk forward
-      // I want the movement to be smoother, so if i hold down it moves 
       if (xSpot > width){
         xSpot = 0;
         page++;
@@ -346,7 +345,20 @@ function changeScreenIfNeeded(){
 
     // starts on page 2 with the town 
     if (page === 2){
+      console.log(xSpot);
       background(townBackDrop);
+
+      if (xSpot === 175){
+        // when the player reaches the bar, ask to go in
+        text('Would you like to enter?', 300, 600);
+        text('Y/N', 300, 700);
+        if(question === true){
+          background(barBackDrop);
+          npcName = "Bar Keep";
+          npc = barKeep;
+        }
+        else{}
+      }
     }
     if (page === 3){
       background(barBackDrop);
