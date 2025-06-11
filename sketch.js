@@ -271,9 +271,9 @@ function keyPressed(){
     page = 2;
 
   }
-  // if (key === 'b'){
-  //   console.log(question);
-  // }
+  if (key === 'b'){
+    console.log(question);
+  }
 }
 
 
@@ -341,6 +341,7 @@ function changeScreenIfNeeded(){
       else{
         xSpot = xSpot + 25;
         console.log("page is" + page);
+        console.log(xSpot);
       }
     }
 
@@ -350,7 +351,8 @@ function changeScreenIfNeeded(){
       displayEnvironment();
       displayPlayer();
 
-      if (xSpot === 175){
+      if (xSpot > 475 && xSpot < 825){
+        fill('white');
         // when the player reaches the bar, ask to go in
         text('Would you like to enter?', 300, 600);
         text('Y/N', 300, 700);
@@ -359,11 +361,11 @@ function changeScreenIfNeeded(){
           npcName = "Bar Keep";
           npc = barKeep;
         }
-        else{
-          background(townBackDrop);
-          displayEnvironment();
-          displayPlayer();
-        }
+        // else{
+        //   background(townBackDrop);
+        //   displayEnvironment();
+        //   displayPlayer();
+        // }
       }
     }
     // if (page === 3){
@@ -515,13 +517,13 @@ function displayEndScreen(){
 function displayEnvironment(){
   fill("#33221c");
   rect(0, 550, width, 300);
-  console.log("envirn work");
+  // console.log("envirn work");
 }
 
 function displayPlayer(){
   text(outlawName, xSpot + 100, 350);
   image(outlaw, xSpot, 350, 200, 200);
-  console.log("player work");
+  // console.log("player work");
 }
 
 function displayNPC(){
