@@ -322,7 +322,7 @@ function changeScreenIfNeeded(){
   }
   if (screen === "play"){
     // displays game
-    background(backDrop3);
+    // background(backDrop3);
     displayEnvironment();
     displayPlayer();
 
@@ -345,8 +345,9 @@ function changeScreenIfNeeded(){
 
     // starts on page 2 with the town 
     if (page === 2){
-      console.log(xSpot);
       background(townBackDrop);
+      displayEnvironment();
+      displayPlayer();
 
       if (xSpot === 175){
         // when the player reaches the bar, ask to go in
@@ -362,65 +363,105 @@ function changeScreenIfNeeded(){
     }
     if (page === 3){
       background(barBackDrop);
+      displayEnvironment();
+      displayPlayer();
+
       npcName = "Bar Keep";
       npc = barKeep; 
     }
     if (page === 4){
       background(townBackDrop);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 5){
       background(backDrop4);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 6){
       background(nightBackDrop);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 7){
       background(backDrop5);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 8){
       background(backDrop15);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 9){
       background(farmBackDrop);
+      displayEnvironment();
+      displayPlayer();
       npcName = "Farmer";
       npc = farmer;
     }
     if (page === 10){
       background(backDrop6);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 11){
       background(backDrop7);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 12){
       background(backDrop8);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 13){
       background(backDrop9);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 14){
       background(town2BackDrop);
+      displayEnvironment();
+      displayPlayer();
+
       npcName = "Sheriff";
       npc = sheriff1;
     }
     if (page === 15){
       background(backDrop10);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 16){
       background(backDrop11);
+      displayEnvironment();
+      displayPlayer();
+
       npcName = "Cowgirl";
       npc = cowgirl;
     }
     if (page === 17){
       background(backDrop14);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 18){
       background(town3BackDrop);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 19){
       background(town3BackDrop2);
+      displayEnvironment();
+      displayPlayer();
     }
     if (page === 20){
       background(town3BackDrop3);
+      displayEnvironment();
+      displayPlayer();
+
       npcName = "Evil Sheriff";
       npc = sheriff2;
     }
@@ -471,11 +512,13 @@ function displayEndScreen(){
 function displayEnvironment(){
   fill("#33221c");
   rect(0, 550, width, 300);
+  console.log("envirn work");
 }
 
 function displayPlayer(){
   text(outlawName, xSpot + 100, 350);
   image(outlaw, xSpot, 350, 200, 200);
+  console.log("player work");
 }
 
 function displayNPC(){
