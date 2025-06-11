@@ -311,6 +311,7 @@ function changeScreenIfNeeded(){
       }
       else{
         xSpot = xSpot + 25;
+        console.log(xSpot);
         console.log("page is" + page);
       }
     }
@@ -358,38 +359,40 @@ function changeScreenIfNeeded(){
           npcName = "Bar Keep";
           npc = barKeep;
         }
-        else{}
+        else{
+          background(townBackDrop);
+          displayEnvironment();
+          displayPlayer();
+        }
       }
     }
-    if (page === 3){
-      background(barBackDrop);
-      displayEnvironment();
-      displayPlayer();
+    // if (page === 3){
+    //   background(barBackDrop);
+    //   displayEnvironment();
+    //   displayPlayer();
 
-      npcName = "Bar Keep";
-      npc = barKeep; 
-    }
-    if (page === 4){
-      background(townBackDrop);
-      displayEnvironment();
-      displayPlayer();
-    }
-    if (page === 5){
+    //   npcName = "Bar Keep";
+    //   npc = barKeep; 
+    // }
+    // if (page === 4){
+
+    // }
+    if (page === 3){
       background(backDrop4);
       displayEnvironment();
       displayPlayer();
     }
-    if (page === 6){
+    if (page === 4){
       background(nightBackDrop);
       displayEnvironment();
       displayPlayer();
     }
-    if (page === 7){
+    if (page === 5){
       background(backDrop5);
       displayEnvironment();
       displayPlayer();
     }
-    if (page === 8){
+    if (page === 6){
       background(backDrop15);
       displayEnvironment();
       displayPlayer();
