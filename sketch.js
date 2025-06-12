@@ -265,7 +265,7 @@ function keyPressed(){
   if (key === "f"){
     outlawName = "Faith";
     screen = 'play';
-    page = 5;
+    page = 2;
 
   }
   if (key === 'b'){
@@ -343,11 +343,8 @@ function changeScreenIfNeeded(){
         console.log(xSpot);
       }
     }
-
     // starts on page 2 with the town 
     pages();
-
-    // add more pages
   }
   if (screen === 'end'){
     background(backDrop13);
@@ -369,7 +366,7 @@ function pages(){
     }
     if(question === 'true'){
       inBar = true;
-      // question = 'none';
+      xSpot = 150;
     }
     else if (question === 'false'){
       inBar = false;
@@ -409,9 +406,17 @@ function pages(){
     }
     if (question === 'true'){
       background(backDrop15);
+      fill('white');
+      text('Use the enter key when ready to continue', 500, 700);
     }
     else if (question === 'false'){
       text('What a shame. such a lovely view...', 300, 600);
+    }
+    if (keyCode === 13){
+      question = 'none';
+      background(backDrop5);
+      displayEnvironment();
+      displayPlayer();
     }
   }
   if (page === 6){
@@ -453,6 +458,26 @@ function pages(){
     background(backDrop10);
     displayEnvironment();
     displayPlayer();
+
+    if (xSpot > 150 && xSpot < 350){
+      fill("white");
+      text('Would you like to look at the landscape?', 300, 600);
+      text('Y/N', 300, 700);
+    }
+    if (question === 'true'){
+      background(backDrop14);
+      fill('white');
+      text('Use the enter key when ready to continue', 500, 700);
+    }
+    else if (question === 'false'){
+      text('What a shame. such a lovely view...', 300, 600);
+    }
+    if (keyCode === 13){
+      question = 'none';
+      background(backDrop10);
+      displayEnvironment();
+      displayPlayer();
+    }
   }
   if (page === 13){
     background(backDrop11);
@@ -461,12 +486,6 @@ function pages(){
 
     npcName = "Cowgirl";
     npc = cowgirl;
-  }
-  if (page === 15){
-    // take out page
-    background(backDrop14);
-    displayEnvironment();
-    displayPlayer();
   }
   if (page === 14){
     background(town3BackDrop);
@@ -526,13 +545,11 @@ function displayEndScreen(){
 function displayEnvironment(){
   fill("#33221c");
   rect(0, 550, width, 300);
-  // console.log("envirn work");
 }
 
 function displayPlayer(){
   text(outlawName, xSpot + 100, 350);
   image(outlaw, xSpot, 350, 200, 200);
-  // console.log("player work");
 }
 
 function displayBar(){
@@ -542,6 +559,8 @@ function displayBar(){
     displayPlayer();
     npcName = "Bar Keep";
     npc = barKeep;
+    displayNPC();
+    npcxSpot = width/2;
     if (xSpot >= 1050){
       fill ('white');
       text('Would you like to exit?', 300, 600);
