@@ -265,12 +265,13 @@ function keyPressed(){
   if (key === "f"){
     outlawName = "Faith";
     screen = 'play';
-    page = 2;
+    page = 5;
 
   }
   if (key === 'b'){
     console.log(question);
     console.log(inBar);
+    console.log(outlawName);
   }
 }
 
@@ -368,7 +369,7 @@ function pages(){
     }
     if(question === 'true'){
       inBar = true;
-      displayBar();
+      // question = 'none';
     }
     else if (question === 'false'){
       inBar = false;
@@ -376,18 +377,16 @@ function pages(){
       displayEnvironment();
       displayPlayer();
     }
+    if (inBar === true){
+      displayBar();
+      question = 'none';
+    }
+    else if (inBar === false){
+      background(townBackDrop);
+      displayEnvironment();
+      displayPlayer();
+    }
   }
-  // if (page === 3){
-  //   background(barBackDrop);
-  //   displayEnvironment();
-  //   displayPlayer();
-
-  //   npcName = "Bar Keep";
-  //   npc = barKeep; 
-  // }
-  // if (page === 4){
-
-  // }
   if (page === 3){
     background(backDrop4);
     displayEnvironment();
@@ -402,40 +401,47 @@ function pages(){
     background(backDrop5);
     displayEnvironment();
     displayPlayer();
+
+    if (xSpot > 350 && xSpot < 650){
+      fill("white");
+      text('Would you like to look at the landscape?', 300, 600);
+      text('Y/N', 300, 700);
+    }
+    if (question === 'true'){
+      background(backDrop15);
+    }
+    else if (question === 'false'){
+      text('What a shame. such a lovely view...', 300, 600);
+    }
   }
   if (page === 6){
-    background(backDrop15);
-    displayEnvironment();
-    displayPlayer();
-  }
-  if (page === 9){
     background(farmBackDrop);
     displayEnvironment();
     displayPlayer();
     npcName = "Farmer";
     npc = farmer;
   }
-  if (page === 10){
+  if (page === 7){
     background(backDrop6);
     displayEnvironment();
     displayPlayer();
   }
-  if (page === 11){
+  if (page === 8){
     background(backDrop7);
     displayEnvironment();
     displayPlayer();
   }
-  if (page === 12){
+  if (page === 9){
     background(backDrop8);
     displayEnvironment();
     displayPlayer();
   }
-  if (page === 13){
+  if (page === 10){
     background(backDrop9);
     displayEnvironment();
     displayPlayer();
   }
-  if (page === 14){
+  if (page === 11){
     background(town2BackDrop);
     displayEnvironment();
     displayPlayer();
@@ -443,12 +449,12 @@ function pages(){
     npcName = "Sheriff";
     npc = sheriff1;
   }
-  if (page === 15){
+  if (page === 12){
     background(backDrop10);
     displayEnvironment();
     displayPlayer();
   }
-  if (page === 16){
+  if (page === 13){
     background(backDrop11);
     displayEnvironment();
     displayPlayer();
@@ -456,22 +462,23 @@ function pages(){
     npcName = "Cowgirl";
     npc = cowgirl;
   }
-  if (page === 17){
+  if (page === 15){
+    // take out page
     background(backDrop14);
     displayEnvironment();
     displayPlayer();
   }
-  if (page === 18){
+  if (page === 14){
     background(town3BackDrop);
     displayEnvironment();
     displayPlayer();
   }
-  if (page === 19){
+  if (page === 15){
     background(town3BackDrop2);
     displayEnvironment();
     displayPlayer();
   }
-  if (page === 20){
+  if (page === 16){
     background(town3BackDrop3);
     displayEnvironment();
     displayPlayer();
@@ -479,7 +486,7 @@ function pages(){
     npcName = "Evil Sheriff";
     npc = sheriff2;
   }
-  if (page === 21){
+  if (page === 17){
 
     // epic duel starts here
 
@@ -535,8 +542,13 @@ function displayBar(){
     displayPlayer();
     npcName = "Bar Keep";
     npc = barKeep;
-    if (xSpot === width - 200){
-      inBar = false;
+    if (xSpot >= 1050){
+      fill ('white');
+      text('Would you like to exit?', 300, 600);
+      text('Y/N', 300, 700);
+      if (question === 'true'){
+        inBar = false;
+      }
     }
   }
 }
