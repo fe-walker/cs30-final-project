@@ -3,8 +3,8 @@
 // 06/13/2025
 //
 
-// things to add 
-// -sound 
+// the code might break, it worked better earlier in the day before i messed with the question system
+// also testing.md is meant to be the reflection i mistyped
 
 
 // state variables
@@ -78,9 +78,7 @@ let farmerText = ["who's there?", "what are you doing on my land?", 'i see...', 
 let farmerTextY = ["i've got space in my barn if that's suitible to your taste", "my wife will get a nice ol' hay bed ready for ya"];
 let farmerTextN = ["alright then. suit yourslef.", "coyotes are real bad 'round here, so be careful when you're leavin'"];
 
-let sheriff1Text = ["You new in town? I ain't never met you before.. and I know this whole town..", "where you headed?", "i see.. i see...", "anything i can do for you?"];
-let sheriff1TextY = ["what might that be sir?"];
-let sheriff1TextN = ["no?", "well then.. safe travels, and I better not see you after sunrise or I'm brining you in", "and be careful, other sheriffs ain't as kind as i"];
+let sheriff1Text = ["You new in town? I ain't never met you before.. and I know this whole town..", "where you headed?", "i see.. i see...", "anything i can do for you?", "no?", "well then.. safe travels, and I better not see you after sunrise or I'm brining you in", "and be careful, other sheriffs ain't as kind as i"];
 
 let cowgirlText = ["I recognize you from somewhere..", "this is my tent, you better stay away if you know whats good for ya", "i'd avoid the next town if i were you..", "later stranger" ];
 
@@ -624,7 +622,6 @@ function talkToNpc(){
         if (y > farmerText.length){
           fill("white");
           asking = true;
-          text("Would you like to speak to them?", 300, 600);
           text("Y/N", 300, 700);
           if (question === 'true'){
             let lineOfText = farmerTextY[y];
@@ -658,20 +655,52 @@ function talkToNpc(){
         textSize(20);
         let lineOfText = sheriff1Text[y];
         text(lineOfText, width - 1000, 600);
-        if (y > sheriff1Text.length - 2){
-          text("add text here", width - 1000, 600);
-  
+        if (y > sheriff1Text.length){
           y = 0;
         }
       }
-      else if(npc === sheriff2 && page === 16){
+      else if(npc === sheriff2){
         textSize(20);
         let lineOfText = sheriff2Text[y];
         text(lineOfText, width - 1000, 600);
         if (y > sheriff2Text.length - 2){
-          text("add text here", width - 1000, 600);
-  
-          y = 0;
+          fill("white");
+          asking = true;
+          text("Y/N", 300, 700);
+          if (question === 'true'){
+            let lineOfText = sheriff2TextY[y];
+            text(lineOfText, width - 1000, 600);
+            if (y > sheriff2TextY.length){
+              fill("white");
+              asking = true;
+              text("Y/N", 300, 700);
+              if (question === 'true'){
+                let lineOfText = sheriff2TextCoOperate[y];
+                text(lineOfText, width - 1000, 600);
+                if (y > sheriff2TextCoOperate.length){
+                  // would trigger jail cell background
+                  y = 0;
+                }
+              }
+              if (question === 'false'){
+                let lineOfText = sheriff2TextFight[y];
+                text(lineOfText, width - 1000, 600);
+                if (y > sheriff2TextFight.length){
+                  // would trigger duel scene
+                  y = 0;
+                }
+              }
+            }
+          }
+          if (question === 'false'){
+            let lineOfText = farmerTextN[y];
+            text(lineOfText, width - 1000, 600);
+            if (y > farmerTextN.length){
+              fill("white");
+              text("Walk past the cow towards the barn", width - 1000, 600);
+              y = 0;
+            }
+          }
         }
       }
     }
