@@ -73,9 +73,6 @@ let nobleLadyText = ["hello!", "You must be " + outlawName + '!', 'this is the e
 
 let barKeepText = ["Can i get you anything sir?", "I ain't never seen you 'round these parts... you new in town?", 'i see...',
   'be awful careful.. our sheriff aint lousy, and you dont seem very fond of the law', 'i know men like you, travellin round.. here for a good time but not a long time am i right?'];
-// may not need y/n text arrays
-// let barKeepTextY = [];
-// let barKeepTextN = [];
 
 let farmerText = ["who's there?", "what are you doing on my land?", 'i see...', "what's your name kid?", outlawName + " huh? never met anyone with that name..",
   'Need shelter for the night?'];
@@ -206,7 +203,6 @@ function keyPressed(){
     }
     if (key === "d"){
       // walk forward
-      // I want the movement to be smoother, so if i hold down it moves 
       if (xSpot > width){
         xSpot = 0;
         page++;
@@ -253,6 +249,10 @@ function keyPressed(){
     if (keyCode === 32){
     // jump
     }
+    if (keyCode === 39){
+      y++;
+      console.log(y);
+    }
   }
   // if (key === 'y'){
   //   question = 'true';
@@ -265,12 +265,12 @@ function keyPressed(){
   if (key === "f"){
     outlawName = "Faith";
     screen = 'play';
-    page = 2;
+    page = 6;
 
   }
   if (key === 'b'){
     console.log(question);
-    console.log(inBar);
+    console.log(y);
     console.log(outlawName);
   }
 }
@@ -366,7 +366,6 @@ function pages(){
     }
     if(question === 'true'){
       inBar = true;
-      xSpot = 150;
     }
     else if (question === 'false'){
       inBar = false;
@@ -376,7 +375,6 @@ function pages(){
     }
     if (inBar === true){
       displayBar();
-      question = 'none';
     }
     else if (inBar === false){
       background(townBackDrop);
@@ -425,6 +423,8 @@ function pages(){
     displayPlayer();
     npcName = "Farmer";
     npc = farmer;
+    npcxSpot = width/2 + 200;
+    displayNPC();
   }
   if (page === 7){
     background(backDrop6);
@@ -583,6 +583,7 @@ function displayNPC(){
 function talkToNpc(){
   if (dist(xSpot, ySpot, npcxSpot, npcySpot) <= 250){
     if (question === 'none'){
+      fill("white");
       text("Would you like to speak to them?", 300, 600);
       text("Y/N", 300, 700);
     }
@@ -599,26 +600,24 @@ function talkToNpc(){
           y = 0;
         }
       }
-      if (npc === barKeep){
+      else if (npc === barKeep){
+        fill("white");
         textSize(20);
         let lineOfText = barKeepText[y];
-        text(lineOfText, width - 1000, 600);
-        npcQuestions();
-        if (y > barKeepText.length - 2){
+        console.log("talk to him");
+        console.log(y);
+        text(lineOfText, 300, 600);
+        if (y > barKeepText.length){
           text("add text here", width - 1000, 600);
           question = 'none';
           y = 0;
         }
       }
       else if(npc === farmer){
+        fill('white');
         textSize(20);
         let lineOfText = farmerText[y];
         text(lineOfText, width - 1000, 600);
-        if (y > farmerText.length - 2){
-          text("add text here", width - 1000, 600);
-          question = 'none';
-          y = 0;
-        }
       }
       else if(npc === cowgirl){
         textSize(20);
@@ -659,23 +658,10 @@ function talkToNpc(){
 }
 
 // function npcQuestions(){
-//   // might add some user inputs here 
-//   if (npc === barKeep){
-//     textSize(20);
-//     if (y === 1){
-//       text("Y/N", 300, 700);
-//       if (question === 'true'){
-//         // get him a drink
-//       }
-//       else if (question === 'false'){
-//       // don't get him a drink 
-//       }
-//     }
 //     // call this each time the NPC asks the user a question
-//   }
-//   else if(npc === farmer){
+//   if(npc === farmer){
 //     textSize(20);
-//     if (y === ){
+//     if (y === farmerText.length){
 //       text("Y/N", 300, 700);
 //       if (question === 'true'){
         
@@ -685,18 +671,18 @@ function talkToNpc(){
 //       }
 //     }
 //   }
-//   else if(npc === cowgirl){
-//     textSize(20);
-//     if (y === ){
-//       text("Y/N", 300, 700);
-//       if (question === 'true'){
+//   // else if(npc === cowgirl){
+//   //   textSize(20);
+//   //   if (y === ){
+//   //     text("Y/N", 300, 700);
+//   //     if (question === 'true'){
         
-//       }
-//       else if (question === 'false'){
+//   //     }
+//   //     else if (question === 'false'){
        
-//       }
-//     }
-//   }
+//   //     }
+//   //   }
+//   // }
 //   else if(npc === sheriff1){
 //     textSize(20);
 //     if (y === ){
